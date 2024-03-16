@@ -6,7 +6,7 @@ const tRPCClientFactory = () => {
   return createTRPCClient<AppRouter>({
     links: [
       httpBatchLink({
-        url: "http://localhost:3333/",
+        url: "http://localhost:3333",
         fetch(url, options) {
           return fetch(url, {
             ...options,
@@ -21,3 +21,7 @@ const tRPCClientFactory = () => {
 export const [injectTRPCClient, provideTRPCClient] = createInjectionToken(
   tRPCClientFactory,
 );
+
+export type Todo = Awaited<
+  ReturnType<ReturnType<typeof tRPCClientFactory>["todos"]["query"]>
+>[number];
