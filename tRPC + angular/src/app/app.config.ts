@@ -1,8 +1,6 @@
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
+import { ApplicationConfig } from "@angular/core";
+import { provideTRPCClient } from "./data-access/trpc-clent";
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)]
+  providers: [provideTRPCClient()],
 };
